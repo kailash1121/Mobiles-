@@ -1,193 +1,243 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>मेरा मोबाइल-फ्रेंडली वेबसाइट</title>
-  <meta name="description" content="Simple responsive website for mobile" />
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
-      --radius:14px; --maxw:1100px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; background:linear-gradient(180deg,var(--bg),#071024 120%);
-      color:#e6eef6; -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale; line-height:1.45;
-      padding:18px;
-      display:flex; justify-content:center;
-    }
-    .wrap{width:100%; max-width:var(--maxw);}
-    header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin-bottom:18px;
-    }
-    .brand{display:flex; gap:12px; align-items:center;}
-    .logo{
-      width:46px; height:46px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#7c3aed);
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#021024; font-size:18px;
-      box-shadow:0 6px 18px rgba(3,7,18,0.6);
-    }
-    .title{font-size:16px; font-weight:600;}
-    .nav-toggle{display:flex; gap:8px; align-items:center;}
-    .btn{
-      background:linear-gradient(90deg,var(--accent),#7dd3fc);
-      color:#012; padding:8px 12px; border-radius:12px; font-weight:600; border:0;
-      box-shadow:0 6px 12px rgba(6,182,212,0.15);
-    }
-
-    /* card */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-      border-radius:var(--radius); padding:16px; margin-bottom:14px;
-      box-shadow: 0 6px 20px rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-    }
-
-    .hero{
-      display:grid; gap:12px; grid-template-columns: 1fr;
-      align-items:center;
-    }
-    .hero .h1{font-size:20px; font-weight:800;}
-    .hero p{color:var(--muted); margin:0 0 6px 0;}
-    .actions{display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;}
-    .small{font-size:13px; color:var(--muted)}
-
-    /* features grid */
-    .grid{
-      display:grid; grid-template-columns: repeat(2,1fr); gap:10px;
-    }
-    .feature{padding:12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
-    .feature h4{margin:0 0 6px 0; font-size:15px}
-    .feature p{margin:0; font-size:13px; color:var(--muted)}
-
-    /* gallery */
-    .gallery{display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;}
-    .gallery img{height:120px; border-radius:10px; object-fit:cover; flex:0 0 auto;}
-
-    /* contact */
-    form input, form textarea{
-      width:100%; padding:10px; margin-top:8px; border-radius:10px; border:0;
-      background:#071826; color:#eaf6fb; font-size:14px;
-    }
-    form button{margin-top:8px;}
-
-    footer{margin-top:12px; text-align:center; color:var(--muted); font-size:13px}
-
-    /* responsive */
-    @media (min-width:700px){
-      .hero{grid-template-columns: 1fr 360px;}
-      .gallery img{height:140px;}
-      .grid{grid-template-columns: repeat(3,1fr);}
-    }
-
-    /* mobile nav */
-    .mobile-nav{position:fixed; left:12px; right:12px; bottom:18px; display:flex; justify-content:space-between; gap:8px}
-    .chip{background:rgba(255,255,255,0.02); padding:10px 12px; border-radius:12px; font-weight:600}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kailash Portfolio Site</title>
+<meta name="description" content="Kailash की मोबाइल-फ्रेंडली और interactive वेबसाइट"/>
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
+  --radius:14px; --maxw:1100px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+[data-theme="light"]{
+  --bg:#f4f4f9; --card:#ffffff; --muted:#6b7280; --accent:#06b6d4; --text:#012;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--bg); color:var(--text,#e6eef6); font-family:inherit; line-height:1.45; padding:18px; display:flex; justify-content:center; transition: background 0.3s,color 0.3s;}
+.wrap{width:100%; max-width:var(--maxw);}
+header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px;}
+.brand{display:flex; gap:12px; align-items:center;}
+.logo img{width:46px; height:46px; border-radius:50%; object-fit:cover; box-shadow:0 6px 12px rgba(3,7,18,0.6);}
+.title{font-size:16px; font-weight:600;}
+.nav-toggle{display:flex; gap:8px; align-items:center;}
+.btn{background:linear-gradient(90deg,var(--accent),#7dd3fc); color:#012; padding:8px 12px; border-radius:12px; font-weight:600; border:0; box-shadow:0 6px 12px rgba(6,182,212,0.15); cursor:pointer; transition: transform 0.2s;}
+.btn:hover{transform: scale(1.05);}
+.card{background:var(--card); border-radius:var(--radius); padding:16px; margin-bottom:14px; box-shadow:0 6px 20px rgba(2,6,23,0.6); backdrop-filter: blur(6px); transition: background 0.3s;}
+.hero{position:relative; display:grid; gap:12px; grid-template-columns:1fr; align-items:center; overflow:hidden; padding:60px 20px; border-radius:var(--radius);}
+.hero::before{content:""; position:absolute; inset:0; background:linear-gradient(270deg, #06b6d4, #7dd3fc, #06b6d4); background-size:600% 600%; animation:gradientBG 10s ease infinite; z-index:0; border-radius:var(--radius);}
+.hero-content{position:relative; z-index:1;}
+.hero .h1{font-size:28px; font-weight:800; opacity:0; transform:translateY(20px); animation:fadeUp 1s forwards;}
+.hero p{color:var(--muted); margin:0 0 6px 0; opacity:0; transform:translateY(20px); animation:fadeUp 1s 0.3s forwards;}
+.actions{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; opacity:0; transform:translateY(20px); animation:fadeUp 1s 0.6s forwards;}
+@keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
+@keyframes gradientBG{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.small{font-size:13px; color:var(--muted);}
+.sticky-nav{position:fixed; top:0; left:0; right:0; display:flex; justify-content:center; gap:12px; background:rgba(15,23,36,0.95); padding:8px 0; z-index:100; box-shadow:0 4px 10px rgba(0,0,0,0.4);}
+.sticky-nav button{background: var(--accent); color:#012; padding:6px 14px; border-radius:10px; border:none; font-weight:600; cursor:pointer; transition: transform 0.2s, background 0.3s;}
+.sticky-nav button:hover{transform: scale(1.05); background:#0ddce0;}
+.gallery-container{position:relative;}
+.gallery{display:flex; gap:8px; overflow-x:hidden; scroll-behavior:smooth;}
+.gallery img{height:140px; border-radius:10px; object-fit:cover; flex:0 0 auto; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;}
+.gallery img:hover{transform: scale(1.05); box-shadow:0 6px 18px rgba(0,0,0,0.5);}
+.arrow{position:absolute; top:50%; transform:translateY(-50%); background:var(--accent); border:none; color:#012; padding:6px 10px; cursor:pointer; border-radius:10px; font-weight:600; z-index:5; transition:transform 0.2s;}
+.arrow:hover{transform:translateY(-50%) scale(1.1);}
+.arrow-left{left:-10px;} .arrow-right{right:-10px;}
+.project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;}
+.project-card{background:rgba(255,255,255,0.02); padding:12px; border-radius:12px; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;}
+.project-card:hover{transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,0.6);}
+.testimonials{display:flex; gap:12px; overflow-x:auto; scroll-behavior:smooth; padding-bottom:6px;}
+.testimonial-card{background:rgba(255,255,255,0.02); padding:16px; border-radius:12px; min-width:240px; flex:0 0 auto;}
+form input, form textarea{width:100%; padding:10px; margin-top:8px; border-radius:10px; border:0; background:#071826; color:#eaf6fb; font-size:14px;}
+form button{margin-top:8px;}
+footer{margin-top:12px; text-align:center; color:var(--muted); font-size:13px;}
+.dark-toggle{position:fixed; bottom:18px; right:18px; background: var(--accent); border:none; color:#012; padding:10px 12px; border-radius:12px; font-weight:600; cursor:pointer; z-index:150; transition: transform 0.2s;}
+.dark-toggle:hover{transform: scale(1.05);}
+canvas#particles{position:absolute; inset:0; z-index:0; pointer-events:none;}
+#lightboxOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;justify-content:center;align-items:center;z-index:200;}
+#lightboxOverlay img{max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.7);}
+.social-links{display:flex; gap:12px; margin-top:8px; justify-content:center;}
+.social-links a{color:var(--accent); font-size:18px; text-decoration:none; transition: transform 0.2s;}
+.social-links a:hover{transform: scale(1.2);}
+</style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">MN</div>
-        <div>
-          <div class="title">Mera Mobile Site</div>
-          <div class="small">Tez · Responsive · Simple</div>
-        </div>
-      </div>
-      <div class="nav-toggle">
-        <button class="btn" onclick="scrollToSection('contact')">Contact</button>
-      </div>
-    </header>
+<body data-theme="dark">
 
-    <main>
-      <section class="card hero" id="home">
-        <div>
-          <div class="h1">नमस्ते! आपका मोबाइल-फ्रेंडली वेबसाइट तैयार है 🚀</div>
-          <p>ये साइट तेज़ है, छोटे data पर अच्छी दिखती है और सीधे फोन से भी खुल जाएगी — बिना किसी बड़ी dependency के।</p>
-          <div class="actions">
-            <button class="btn" onclick="downloadDemo()">Download HTML</button>
-            <a class="chip" href="#gallery">Gallery</a>
-          </div>
-        </div>
+<!-- Sticky Nav -->
+<nav class="sticky-nav">
+  <button onclick="scrollToSection('home')">Home</button>
+  <button onclick="scrollToSection('gallery')">Gallery</button>
+  <button onclick="scrollToSection('projects')">Projects</button>
+  <button onclick="scrollToSection('testimonials')">Testimonials</button>
+  <button onclick="scrollToSection('contact')">Contact</button>
+</nav>
 
-        <div class="card" style="padding:12px;">
-          <div style="font-weight:700; margin-bottom:6px;">Quick info</div>
-          <div class="small">HTML single file — खोलने के लिए बस index.html सेव करके ब्राउज़र में खोलें।</div>
-        </div>
-      </section>
-
-      <section class="card" style="margin-top:12px;">
-        <h3 style="margin:0 0 10px 0">हमारी खासियतें</h3>
-        <div class="grid">
-          <div class="feature"><h4>Mobile-first</h4><p>छोटे स्क्रीन पर बेहतर UX — बड़ा टेक्स्ट, बड़ा बटन।</p></div>
-          <div class="feature"><h4>Fast</h4><p>कोई external library नहीं — तेज़ लोडिंग।</p></div>
-          <div class="feature"><h4>Offline friendly</h4><p>आप फाइल सेव करके ऑफलाइन भी खोल सकते हैं।</p></div>
-          <div class="feature"><h4>Easy edit</h4><p>कोड सीधे edit कर सकते हैं — कोई build chain नहीं।</p></div>
-          <div class="feature"><h4>Contact</h4><p>mailto fallback — बिना server के भी संपर्क भेजें।</p></div>
-          <div class="feature"><h4>Hostable</h4><p>GitHub Pages पे 1 मिनट में host किया जा सकता है।</p></div>
-        </div>
-      </section>
-
-      <section class="card" id="gallery" style="margin-top:12px;">
-        <h3 style="margin:0 0 10px 0">Gallery</h3>
-        <div class="gallery">
-          <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800&q=60&auto=format&fit=crop" alt="">
-          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=800&q=60&auto=format&fit=crop" alt="">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&q=60&auto=format&fit=crop" alt="">
-        </div>
-      </section>
-
-      <section class="card" id="contact" style="margin-top:12px;">
-        <h3 style="margin:0 0 8px 0">Contact / Send message</h3>
-        <p class="small">यह contact फॉर्म सीधे ईमेल खोलता है (mailto)। अगर आप चाहें तो मैं आपको server-side code भी दे दूंगा।</p>
-        <form id="contactForm" onsubmit="sendMail(event)">
-          <input type="text" id="name" placeholder="आपका नाम" required />
-          <input type="email" id="email" placeholder="ईमेल (aap@example.com)" required />
-          <textarea id="msg" rows="4" placeholder="संदेश लिखें..." required></textarea>
-          <button class="btn" type="submit">Send (opens email)</button>
-        </form>
-      </section>
-
-      <footer class="small">© 2025 — मेरा मोबाइल साइट · बनायी गयी ChatGPT की मदद से</footer>
-    </main>
-
-    <div class="mobile-nav">
-      <div class="chip" onclick="scrollToSection('home')">Home</div>
-      <div class="chip" onclick="scrollToSection('gallery')">Gallery</div>
-      <div class="chip" onclick="scrollToSection('contact')">Contact</div>
-    </div>
+<div class="wrap" style="padding-top:60px;">
+<header>
+  <div class="brand">
+    <div class="logo"><img src="1000082209.jpg" alt="Kailash"></div>
+    <div><div class="title">Kailash Portfolio Site</div><div class="small">Tez · Responsive · Modern</div></div>
   </div>
+  <div class="nav-toggle"><button class="btn" onclick="scrollToSection('contact')">Contact</button></div>
+</header>
 
-  <script>
-    function scrollToSection(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'center'});
-    }
+<main>
+<!-- Hero Section -->
+<section class="card hero" id="home">
+<canvas id="particles"></canvas>
+<div class="hero-content">
+<div class="h1">नमस्ते! मैं Kailash 🚀</div>
+<p>ये साइट पूरी तरह मोबाइल-फ्रेंडली और interactive है।</p>
+<div class="actions">
+<button class="btn" onclick="scrollToSection('contact')">Contact Me</button>
+<a href="resume.pdf" download class="btn">Download Resume</a>
+</div>
+</div>
+</section>
 
-    function sendMail(e){
-      e.preventDefault();
-      const name = encodeURIComponent(document.getElementById('name').value);
-      const email = encodeURIComponent(document.getElementById('email').value);
-      const msg = encodeURIComponent(document.getElementById('msg').value);
-      const subject = encodeURIComponent('Website contact from ' + name);
-      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\nMessage:\\n' + msg);
-      // mailto fallback
-      window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
-    }
+<!-- Gallery Section -->
+<section class="card" id="gallery">
+<h3>Gallery</h3>
+<div class="gallery-container">
+<button class="arrow arrow-left" onclick="scrollGallery(-200)">◀</button>
+<div class="gallery">
+<img src="1000082209.jpg" alt="Kailash">
+<img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800&q=60&auto=format&fit=crop" alt="">
+<img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=800&q=60&auto=format&fit=crop" alt="">
+</div>
+<button class="arrow arrow-right" onclick="scrollGallery(200)">▶</button>
+</div>
+</section>
 
-    // Download demo HTML (creates a blob and triggers download)
-    function downloadDemo(){
-      const html = document.documentElement.outerHTML;
-      const blob = new Blob([html], {type: 'text/html'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'index.html';
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }
-  </script>
+<!-- Projects Section -->
+<section class="card" id="projects">
+<h3>Projects</h3>
+<div class="project-grid">
+  <div class="project-card" onclick="openProjectModal(0)">Project 1</div>
+  <div class="project-card" onclick="openProjectModal(1)">Project 2</div>
+  <div class="project-card" onclick="openProjectModal(2)">Project 3</div>
+</div>
+</section>
+
+<!-- Project Modal -->
+<div id="projectModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);justify-content:center;align-items:center;z-index:300;">
+  <div style="background:var(--card);padding:20px;border-radius:14px;max-width:500px;max-height:80%;overflow:auto;color:#fff;position:relative;">
+    <span style="position:absolute;top:10px;right:14px;cursor:pointer;font-size:24px;" onclick="closeProjectModal()">×</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div id="modalImages" style="display:flex;gap:6px;overflow-x:auto;"></div>
+    <a id="modalDemo" href="#" target="_blank" class="btn" style="margin-top:10px;">View Demo</a>
+  </div>
+</div>
+
+<!-- Testimonials -->
+<section class="card" id="testimonials">
+<h3>Testimonials</h3>
+<div class="testimonials">
+<div class="testimonial-card">"Awesome work!" - Client A</div>
+<div class="testimonial-card">"Professional and fast." - Client B</div>
+<div class="testimonial-card">"Highly recommend!" - Client C</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="card" id="contact">
+<h3>Contact</h3>
+<form onsubmit="sendMail(event)">
+<input type="text" id="name" placeholder="आपका नाम" required/>
+<input type="email" id="email" placeholder="ईमेल" required/>
+<textarea id="msg" rows="4" placeholder="संदेश लिखें..." required></textarea>
+<button class="btn" type="submit">Send</button>
+</form>
+<div class="social-links">
+<a href="https://instagram.com/" target="_blank">Instagram</a>
+<a href="https://youtube.com/" target="_blank">YouTube</a>
+<a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+</div>
+</section>
+
+<footer class="small">© 2025 — Kailash Portfolio Site</footer>
+</main>
+</div>
+
+<!-- Lightbox -->
+<div id="lightboxOverlay"><img id="lightboxImg" src=""></div>
+
+<!-- Dark Mode Toggle -->
+<button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark/Light</button>
+
+<script>
+// Smooth scroll
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function scrollGallery(px){document.querySelector('.gallery').scrollBy({left:px,behavior:'smooth'});}
+
+// Dark Mode
+function toggleDarkMode(){
+  document.body.dataset.theme = document.body.dataset.theme==='dark'?'light':'dark';
+}
+
+// Contact Form
+function sendMail(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const email=document.getElementById('email').value;
+  const msg=document.getElementById('msg').value;
+  const subject=encodeURIComponent('Message from '+name);
+  const body=encodeURIComponent('From: '+name+' ('+email+')\n\n'+msg);
+  window.location.href=`mailto:your-email@example.com?subject=${subject}&body=${body}`;
+}
+
+// Projects Modal
+const projects=[
+{title:"Project 1",desc:"This is Project 1 description.",images:["1000082209.jpg","https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800&q=60"],demo:"#"},
+{title:"Project 2",desc:"This is Project 2 description.",images:["https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=800&q=60"],demo:"#"},
+{title:"Project 3",desc:"This is Project 3 description.",images:["https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800&q=60"],demo:"#"}
+];
+function openProjectModal(index){
+  const modal=document.getElementById('projectModal');
+  modal.style.display='flex';
+  document.getElementById('modalTitle').innerText=projects[index].title;
+  document.getElementById('modalDesc').innerText=projects[index].desc;
+  const imagesDiv=document.getElementById('modalImages');
+  imagesDiv.innerHTML='';
+  projects[index].images.forEach(src=>{
+    const img=document.createElement('img'); img.src=src; img.style.height='100px'; img.style.borderRadius='10px';
+    imagesDiv.appendChild(img);
+  });
+  document.getElementById('modalDemo').href=projects[index].demo;
+}
+function closeProjectModal(){document.getElementById('projectModal').style.display='none';}
+
+// Gallery Lightbox + Swipe + Keyboard
+let currentLightboxIndex=0;
+const galleryImgs=document.querySelectorAll('.gallery img');
+const lightboxOverlay=document.getElementById('lightboxOverlay');
+const lightboxImg=document.getElementById('lightboxImg');
+galleryImgs.forEach((img,i)=>{img.addEventListener('click',()=>{openLightbox(i);});});
+function openLightbox(index){lightboxImg.src=galleryImgs[index].src; currentLightboxIndex=index; lightboxOverlay.style.display='flex';}
+function closeLightbox(){lightboxOverlay.style.display='none';}
+document.addEventListener('keydown',e=>{
+  if(lightboxOverlay.style.display==='flex'){
+    if(e.key==='ArrowRight'){currentLightboxIndex=(currentLightboxIndex+1)%galleryImgs.length; lightboxImg.src=galleryImgs[currentLightboxIndex].src;}
+    if(e.key==='ArrowLeft'){currentLightboxIndex=(currentLightboxIndex-1+galleryImgs.length)%galleryImgs.length; lightboxImg.src=galleryImgs[currentLightboxIndex].src;}
+    if(e.key==='Escape'){closeLightbox();}
+  }
+});
+// Touch Swipe
+let touchStartX=0;
+lightboxOverlay.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;});
+lightboxOverlay.addEventListener('touchend',e=>{
+  let touchEndX=e.changedTouches[0].screenX;
+  if(touchEndX-touchStartX>50){currentLightboxIndex=(currentLightboxIndex-1+galleryImgs.length)%galleryImgs.length; lightboxImg.src=galleryImgs[currentLightboxIndex].src;}
+  if(touchStartX-touchEndX>50){currentLightboxIndex=(currentLightboxIndex+1)%galleryImgs.length; lightboxImg.src=galleryImgs[currentLightboxIndex].src;}
+});
+
+// Particles
+const canvas=document.getElementById('particles'); const ctx=canvas.getContext('2d'); let w=canvas.width=window.innerWidth; let h=canvas.height=window.innerHeight; let particles=[];
+for(let i=0;i<100;i++){particles.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*2+1, dx:(Math.random()-0.5)*1.5, dy:(Math.random()-0.5)*1.5});}
+function animate(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.x+=p.dx;p.y+=p.dy; if(p.x<0||p.x>w)p.dx*=-1;if(p.y<0||p.y>h)p.dy*=-1; ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(6,182,212,0.5)';ctx.fill();});requestAnimationFrame(animate);}
+animate(); window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;});
+</script>
 </body>
 </html>
